@@ -8,7 +8,7 @@ The STEDI team aims to utilize the motion sensor data to train a machine learnin
 # Implementation 
 The aim of the project was to extract data produced by the Step Trainer and the mobile application and create a data lakehouse solution on AWS using Glue service, Athena, S3 and Python and Spark. The web based tools and services helped me to create a python script that was then altered manually if needed. 
 
-### Data Flow
+### General Data Flow Logic
 Look at the flowchart below to understand the data flow
 ![Data_lakehouse_solution_aws](https://github.com/paulinaruda/data_lakehouse/assets/84568114/07cfd097-9285-4b0a-8b62-662381b400be)
 
@@ -25,3 +25,6 @@ Look at the flowchart below to understand the data flow
 
 #### For all data sources: <br>
 * machine_learning_curated.py creates an aggregated table that has each of the Step Trainer Readings, and the associated acceleromemaeter reading data for the same timestamp, but only for customers who have agreed to share their data, and make a glue table called machine_learning_curated.
+
+### Data Flow for each Glue Job
+![all_glue_jobs_visualisation](https://github.com/paulinaruda/data_lakehouse/assets/84568114/174c76a3-c166-4fed-b939-9087f5326eb9)
