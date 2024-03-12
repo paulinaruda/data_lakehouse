@@ -1,4 +1,4 @@
-# STEDI Human Balance Analytics
+# STEDI Human Balance Data Lakehouse with Spark and Glue
 
 Thie project is a Spark and AWS Glue project by Paulina R and is a part od Data Engineering Nanodegree with Udacity.<br>
 The STEDI company team has been actively working on developing a hardware device called the STEDI Step Trainer. This device serves two purposes: first, it trains users to perform a balance exercise called STEDI; second, it has sensors that collect data to train a machine-learning algorithm to detect steps. Additionally, there is a companion mobile app that collects customer data and interacts with the device sensors.<br>
