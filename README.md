@@ -8,6 +8,20 @@ The STEDI team aims to utilize the motion sensor data to train a machine learnin
 # Implementation 
 The aim of the project was to extract data produced by the Step Trainer and the mobile application and create a data lakehouse solution on AWS using Glue service, Athena, S3 and Python and Spark. The web based tools and services helped me to create a python script that was then altered manually if needed. 
 
-# Data Flow
+### Data Flow
 Look at the flowchart below to understand the data flow
 ![Data_lakehouse_solution_aws](https://github.com/paulinaruda/data_lakehouse/assets/84568114/07cfd097-9285-4b0a-8b62-662381b400be)
+
+### Each file implements tasks:<br>
+#### For customer data:<br>
+* customer_landing_to_trusted.py cleans the Customer data from the Website (Landing Zone) and only store the Customer Records who agreed to share their data for research purposes (Trusted Zone) - creating a Glue Table called customer_trusted.
+* customer_trusted_to_curated.py cleans the Customer data (Trusted Zone) and create a Glue Table (Curated Zone) that only includes customers who have accelerometer data and have agreed to share their data for research called customers_curated.
+
+#### For step training data:<br>
+* step_trainer_landing_to_trusted.py reads the Step Trainer IoT data stream (S3) and populate a Trusted Zone Glue Table called step_trainer_trusted that contains the Step Trainer Records data for customers who have accelerometer data and have agreed to share their data for research (customers_curated).
+
+#### For accelerometer data:<br>
+* accelerometer_landing_to_trusted.py cleans the Accelerometer data from the Mobile App (Landing Zone) - and only store Accelerometer Readings from customers who agreed to share their data for research purposes (Trusted Zone) - creating a Glue Table called accelerometer_trusted.
+
+#### For all data sources: <br>
+* machine_learning_curated.py creates an aggregated table that has each of the Step Trainer Readings, and the associated acceleromemaeter reading data for the same timestamp, but only for customers who have agreed to share their data, and make a glue table called machine_learning_curated.
